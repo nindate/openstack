@@ -9,11 +9,11 @@ Keystone, Glance, Nova, Neutron (including LBaaS and FWaaS), Horizon, Cinder, Sw
 
 2. Setup explanation:
 It is better that I explain a little bit on some generic stuff of Openstack in the context of this setup. In Openstack,
-- there are mainly the following types of nodes: Controller node, Network node, Compute node, Block Storage node, Object Storage node. In the AIO setup all these functions are performed on/by the AIO server.
-- there are various types of network traffic flowing based on which we have the following networks:
-  - Management network : Openstack nodes communicate with each other on this network. Thus all Openstack nodes need to have connectivity with this network
-  - Data/Tunnel network : The instances (virtual machines) launched on the Compute nodes talk to each other and to the Network node (for advanced networking like router, firewall, load balancer etc.) on this network. Thus only Network node and all the Compute nodes need to have connectivity with this network
-  - External network : The instances on the Compute nodes communicate with servers / services outside Openstack setup via this network. Typically the instances can communicate outside only via the L3 services on the Network node and hence Network node needs to have connectivity with this network (Although since Juno release features like DVR allow this communication directly from compute nodes - am not considering that for this setup)
+  - there are mainly the following types of nodes: Controller node, Network node, Compute node, Block Storage node, Object Storage node. In the AIO setup all these functions are performed on/by the AIO server.
+  - there are various types of network traffic flowing based on which we have the following networks:
+    - Management network : Openstack nodes communicate with each other on this network. Thus all Openstack nodes need to have connectivity with this network
+    - Data/Tunnel network : The instances (virtual machines) launched on the Compute nodes talk to each other and to the Network node (for advanced networking like router, firewall, load balancer etc.) on this network. Thus only Network node and all the Compute nodes need to have connectivity with this network
+    - External network : The instances on the Compute nodes communicate with servers / services outside Openstack setup via this network. Typically the instances can communicate outside only via the L3 services on the Network node and hence Network node needs to have connectivity with this network (Although since Juno release features like DVR allow this communication directly from compute nodes - am not considering that for this setup)
   In the AIO setup all these networks will be connected to the single server we will be having - our AIO server. Following figure shows this connectivity
 
 "---MANAGEMENT NW---------------"

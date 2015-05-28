@@ -8,7 +8,7 @@ Following Openstack components will be installed by these scripts:
 Keystone, Glance, Nova, Neutron (including LBaaS and FWaaS), Horizon, Cinder, Swift, Heat and Ceilometer
 
 2. Setup explanation:
-It is better that I explain a little bit on some generic stuff of Openstack in the context of this setup. In Openstack, 
+It is better that I explain a little bit on some generic stuff of Openstack in the context of this setup. In Openstack,
 - there are mainly the following types of nodes: Controller node, Network node, Compute node, Block Storage node, Object Storage node. In the AIO setup all these functions are performed on/by the AIO server.
 - there are various types of network traffic flowing based on which we have the following networks:
   - Management network : Openstack nodes communicate with each other on this network. Thus all Openstack nodes need to have connectivity with this network

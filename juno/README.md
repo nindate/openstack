@@ -18,9 +18,9 @@ In Openstack,
   - External network : The instances on the Compute nodes communicate with servers / services outside Openstack setup via this network. Typically the instances can communicate outside only via the L3 services on the Network node and hence Network node needs to have connectivity with this network (Although since Juno release features like DVR allow this communication directly from compute nodes - am not considering that for this setup)
   In the AIO setup all these networks will be connected to the single server we will be having - our AIO server. Following figure shows this connectivity
 
----MANAGEMENT NW---------------
-                              |
-                          eth0|
+"---MANAGEMENT NW---------------"
+"                             |"
+"                         eth0|"
                            -------Controller
                       eth2 |     |   +             +
 ---EXTERNAL NW-------------|     | Network     Block Storage

@@ -29,8 +29,8 @@ It is better that I explain a little bit on some generic stuff of Openstack in t
 ---DATA/TUNNEL NW--------------
 
 3. Setup requirements:
-- In case you are using a Virtual Machine (and that's what I do usually) you would need to create a VM with atleast 2 CPUs and 5 GB memory (however if you want to run several instances inside Openstack you would need more CPU/Memory for your server)
-- Install Ubuntu 14.04 x64 server with Openssh package installed (so that you can ssh to this server) and update the server with following command
-apt-get update -y
+  - In case you are using a Virtual Machine (and that's what I do usually) you would need to create a VM with atleast 2 CPUs and 5 GB memory (however if you want to run several instances inside Openstack you would need more CPU/Memory for your server)
+  - Install Ubuntu 14.04 x64 server with Openssh package installed (so that you can ssh to this server) and update the server with following command
+    apt-get update -y
 
 

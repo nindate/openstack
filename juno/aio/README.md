@@ -36,9 +36,24 @@ Create a directory to place the Openstack installation scripts.
     $ mkdir scripts
     $ cd scripts
 
-Download the scripts
+Download the scripts. Either you can clone the entire git repo or simply downloads the necessary scripts, using below commands:
+
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/0-juno-aio-prepare.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/1-juno-aio-install-keystone.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/2-juno-aio-install-glance.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/3-juno-aio-install-nova.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/4-juno-aio-install-neutron.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/5-juno-aio-install-horizon.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/6-juno-aio-install-cinder.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/7-juno-aio-install-swift.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/8-juno-aio-install-heat.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/9-juno-aio-install-ceilometer.sh
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/config.cfg
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/proxy-server.conf-sample
+    $ wget https://raw.githubusercontent.com/nindate/openstack/master/juno/aio/swift.conf-sample
 
 Become root user:
+
     $ sudo -s
 
 Update the config.cfg file with appropriate details for the installation e.g. which interface will be used for Management network, Tunnel network, External network; what will be the IP addresses for Management, Tunnel, External interfaces etc.

@@ -43,7 +43,7 @@ This script will prepare the server for Openstack installation. Following will b
 
 Once the script has run successfully, restart the server using init 6
 
-* 1-juno-aio-install-keystone.sh
+1-juno-aio-install-keystone.sh
 
 This script will install and configure the Identity service for Openstack which is Keystone. Following will be done:
 - Create database and database user for keystone in MySQL

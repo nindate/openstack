@@ -163,12 +163,9 @@ This script will install and configure the Networking service for Openstack whic
     - Create database and database user for neutron in MySQL
     - Create a user for neutron in keystone, give admin role to this user and add to service tenant
     - Create service for Networking service in keystone and define an endpoint for this service
-    - Install packages for neutron (openvswitch-controller, openvswitch-switch, 
-neutron-server, neutron-plugin-ml2, neutron-plugin-openvswitch-agent, 
-neutron-l3-agent, neutron-dhcp-agent conntrack)
+    - Install packages for neutron (openvswitch-controller, openvswitch-switch, neutron-server, neutron-plugin-ml2, neutron-plugin-openvswitch-agent, neutron-l3-agent, neutron-dhcp-agent conntrack)
     - Configure neutron
-    - Restart neutron services (neutron-server, neutron-l3-agent, neutron-dhcp-agent, neutron-metadata-agent, openvswitch-switch, neutron-plugin-openvswitch-agent
-)
+    - Restart neutron services (neutron-server, neutron-l3-agent, neutron-dhcp-agent, neutron-metadata-agent, openvswitch-switch, neutron-plugin-openvswitch-agent)
     - Create OVS bridge for External bridge
     - Update the /etc/network/interface file with configurations for the various ethernet interfaces and external bridge and bring up the interfaces with these settings
     - Install package for Load balancer as a service (LBaaS) plugin (neutron-lbaas-agent)

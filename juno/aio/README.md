@@ -19,19 +19,55 @@ It is better that I explain a little bit on some generic stuff of Openstack in t
    In the AIO setup all these networks will be connected to the single server we will be having - our AIO server. Following figure shows this connectivity
 
 ### 3. Setup requirements:
-  * In case you are using a Virtual Machine (and that's what I do usually) you would need to create a VM with atleast 2 CPUs and 5 GB memory (however if you want to run several instances inside Openstack you would need more CPU/Memory for your server)
-  * Install Ubuntu 14.04 x64 server with Openssh package installed (so that you can ssh to this server). Update the packages on the server with following command
-    
+Following are the requirements for the AIO server.
+  * In case you are using a Virtual Machine you would need to create a VM with atleast 2 CPUs, 5 GB memory, 40 GB hard disk. This configuration should be enough for basic demo/testing with cirros cloud image to deploy instances in Openstack cloud. However, if you want to use any other OS (like Ubuntu, CentOS, Fedora etc.) inside Openstack you would need more CPU/Memory for the AIO server.
+  * For network, it is ideal to have atleast 3 network interfaces for the AIO server as explained in Section 2 above. However if you have less number of interfaces, the scripts will still work - you just need to update the config.cfg file appropriately.
+  * Install Ubuntu 14.04 x64 server with Openssh package installed (so that you can ssh to this server). 
+  * Update the packages on the server with following command:
+
     apt-get update -y
 
 
 ### 4. Install Openstack:
-Run sudo -s , to become root
+After you have Ubuntu 14.04 server installed on the AIO server, perform the following steps to install Openstack
 
-First update the config.cfg file with appropriate details for the installation e.g. which interface will be used for Management network, Tunnel network, External network; what will be the IP addresses for Management, Tunnel, External interfaces etc.
+Create a directory to place the Openstack installation scripts.
 
- After you have updated the config.cfg file, you need to run the following scripts in the listed order.
+   mkdir scripts ; cd scripts
 
+Download the scripts
+
+Run sudo -s , to become root. 
+
+Update the config.cfg file with appropriate details for the installation e.g. which interface will be used for Management network, Tunnel network, External network; what will be the IP addresses for Management, Tunnel, External interfaces etc.
+
+After you have updated the config.cfg file, you need to run the following scripts in the listed order. (For a detailed explanation about each script, what it does you can go through the next Section [5. Detailed explanation about the scripts](https://github.com/nindate/openstack/master/juno/aio#5-detailed-explanation-about-the-scripts)
+
+./0-juno-aio-prepare.sh - This script will prepare the server for Openstack installation.
+
+./1-juno-aio-install-keystone.sh - This script will install and configure the Identity service for Openstack which is Keystone.
+
+./2-juno-aio-install-glance.sh - This script will install and configure the Image service for Openstack which is Glance.
+
+./3-juno-aio-install-nova.sh - This script will install and configure the Compute service for Openstack which is Nova
+
+./4-juno-aio-install-neutron.sh - This script will install and configure the Networking service for Openstack which is Neutron.
+
+./5-juno-aio-install-horizon.sh - This script will install and configure the Dashboard service for Openstack which is Horizon.
+
+At this stage, the Openstack dashboard is installed and you can access it using the admin or demo username and password that you have set in config.cfg file. The URL for dashboard and the user/password will be displayed when the 5-juno-aio-install-horizon.sh script completes execution.
+
+./6-juno-aio-install-cinder.sh - This script will install and configure the Block storage service for Openstack which is Cinder.
+
+./7-juno-aio-install-swift.sh - This script will install and configure the Object storage service for Openstack which is Swift.
+
+./8-juno-aio-install-heat.sh - This script will install and configure the Orchestration service for Openstack which is Heat.
+
+./9-juno-aio-install-ceilometer.sh - This script will install and configure the Metering service for Openstack which is Ceilometer. 
+
+
+
+### 5. Detailed explanation about the scripts:
 0-juno-aio-prepare.sh
 This script will prepare the server for Openstack installation. Following will be done:
 

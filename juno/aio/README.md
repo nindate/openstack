@@ -109,127 +109,136 @@ This completes installation of the Openstack components on your Openstack AIO se
 0-juno-aio-prepare.sh
 This script will prepare the server for Openstack installation. Following will be done:
 
-- Install the Ubuntu Cloud archive keyring and repository. Update and Upgrade the packages on the system
-- Configure ip forwarding for ipv4
-- Install and configure NTP server
-- Install MySQL database and secure the mysql installation
-- Install RabbitMQ messaging server and create guest user (which will be used by openstack services)
+    - Install the Ubuntu Cloud archive keyring and repository. Update and Upgrade the packages on the system
+    - Configure ip forwarding for ipv4
+    - Install and configure NTP server
+    - Install MySQL database and secure the mysql installation
+    - Install RabbitMQ messaging server and create guest user (which will be used by openstack services)
 
 Once the script has run successfully, restart the server using init 6
 
 1-juno-aio-install-keystone.sh
 
 This script will install and configure the Identity service for Openstack which is Keystone. Following will be done:
-- Create database and database user for keystone in MySQL
-- Install packages for keystone and python client for keystone
-- Configure keystone
-- Restart keystone service
-- Create a cron job for flushing tokens every hour
-- Create cloud administrator tenant and user (admin)
-- Create tenant and user for a demo cloud user 
-- Create role for cloud administrator and for a normal user and attach these roles to the admin and the demo users respectively
-- Create a tenant for Openstack services (For each Openstack service a user will then be created in keystone and made a member of this service tenant)
-- Create a keystone endpoint
-- Create environment files for admin and demo users
+
+    - Create database and database user for keystone in MySQL
+    - Install packages for keystone and python client for keystone
+    - Configure keystone
+    - Restart keystone service
+    - Create a cron job for flushing tokens every hour
+    - Create cloud administrator tenant and user (admin)
+    - Create tenant and user for a demo cloud user 
+    - Create role for cloud administrator and for a normal user and attach these roles to the admin and the demo users respectively
+    - Create a tenant for Openstack services (For each Openstack service a user will then be created in keystone and made a member of this service tenant)
+    - Create a keystone endpoint
+    - Create environment files for admin and demo users
 
 
 2-juno-aio-install-glance.sh
 
 This script will install and configure the Image service for Openstack which is Glance. Following will be done:
-- Create database and database user for glance in MySQL
-- Create a user for glance in keystone, give admin role to this user and add to service tenant
-- Create service for Imaging service in keystone and define an endpoint for this service
-- Install packages for glance and python client for glance
-- Configure glance-api and glance-registry
-- Restart glance services (glance-api, glance-registry)
+
+    - Create database and database user for glance in MySQL
+    - Create a user for glance in keystone, give admin role to this user and add to service tenant
+    - Create service for Imaging service in keystone and define an endpoint for this service
+    - Install packages for glance and python client for glance
+    - Configure glance-api and glance-registry
+    - Restart glance services (glance-api, glance-registry)
 
 3-juno-aio-install-nova.sh
 
 This script will install and configure the Compute service for Openstack which is Nova. Following will be done:
-- Create database and database user for nova in MySQL
-- Create a user for nova in keystone, give admin role to this user and add to service tenant
-- Create service for Compute service in keystone and define an endpoint for this service
-- Install packages for nova (nova-api nova-cert nova-conductor nova-consoleauth  nova-novncproxy nova-scheduler), for KVM (nova-compute-kvm python-guestfs sysfsutils) and python client for nova (python-novaclient)
-- Configure nova (nova.conf), set virtualization type, configure settings to allow resize of instance, configure for neutron networking
-- Restart nova services (nova-conductor, nova-api, nova-cert, nova-consoleauth, nova-scheduler, nova-novncproxy, nova-compute)
+
+    - Create database and database user for nova in MySQL
+    - Create a user for nova in keystone, give admin role to this user and add to service tenant
+    - Create service for Compute service in keystone and define an endpoint for this service
+    - Install packages for nova (nova-api nova-cert nova-conductor nova-consoleauth  nova-novncproxy nova-scheduler), for KVM (nova-compute-kvm python-guestfs sysfsutils) and python client for nova (python-novaclient)
+    - Configure nova (nova.conf), set virtualization type, configure settings to allow resize of instance, configure for neutron networking
+    - Restart nova services (nova-conductor, nova-api, nova-cert, nova-consoleauth, nova-scheduler, nova-novncproxy, nova-compute)
 
 4-juno-aio-install-neutron.sh
 
 This script will install and configure the Networking service for Openstack which is Neutron. Following will be done:
-- Create database and database user for neutron in MySQL
-- Create a user for neutron in keystone, give admin role to this user and add to service tenant
-- Create service for Networking service in keystone and define an endpoint for this service
-- Install packages for neutron (openvswitch-controller, openvswitch-switch, 
+
+    - Create database and database user for neutron in MySQL
+    - Create a user for neutron in keystone, give admin role to this user and add to service tenant
+    - Create service for Networking service in keystone and define an endpoint for this service
+    - Install packages for neutron (openvswitch-controller, openvswitch-switch, 
 neutron-server, neutron-plugin-ml2, neutron-plugin-openvswitch-agent, 
 neutron-l3-agent, neutron-dhcp-agent conntrack)
-- Configure neutron
-- Restart neutron services (neutron-server, neutron-l3-agent, neutron-dhcp-agent, neutron-metadata-agent, openvswitch-switch, neutron-plugin-openvswitch-agent
+    - Configure neutron
+    - Restart neutron services (neutron-server, neutron-l3-agent, neutron-dhcp-agent, neutron-metadata-agent, openvswitch-switch, neutron-plugin-openvswitch-agent
 )
-- Create OVS bridge for External bridge
-- Update the /etc/network/interface file with configurations for the various ethernet interfaces and external bridge and bring up the interfaces with these settings
-- Install package for Load balancer as a service (LBaaS) plugin (neutron-lbaas-agent)
-- Configure LBaaS
-- Configure Firewall as a service (FWaaS)
-- Presently the section of the script which can install VPN as a service (VPNaaS) is commented out because installation of VPN agent causes neutron l3 agent to be uninstalled. When proper fix is released, this section can be uncommented.
-- Restart the neutron services (neutron-server, neutron-lbaas-agent, neutron-l3-agent)
+    - Create OVS bridge for External bridge
+    - Update the /etc/network/interface file with configurations for the various ethernet interfaces and external bridge and bring up the interfaces with these settings
+    - Install package for Load balancer as a service (LBaaS) plugin (neutron-lbaas-agent)
+    - Configure LBaaS
+    - Configure Firewall as a service (FWaaS)
+    - Presently the section of the script which can install VPN as a service (VPNaaS) is commented out because installation of VPN agent causes neutron l3 agent to be uninstalled. When proper fix is released, this section can be uncommented.
+    - Restart the neutron services (neutron-server, neutron-lbaas-agent, neutron-l3-agent)
 
 5-juno-aio-install-horizon.sh
 
 This script will install and configure the Dashboard service for Openstack which is Horizon. Following will be done:
-- Install packages for Openstack dashboard and remove the Ubuntu theme for dashboard
-- Configure apache2 to listen on IP address and ports for Dashboard
-- Enable lbaas, fwaas, cinder-backup to be visible via dashboard and restart apache2 service
+
+    - Install packages for Openstack dashboard and remove the Ubuntu theme for dashboard
+    - Configure apache2 to listen on IP address and ports for Dashboard
+    - Enable lbaas, fwaas, cinder-backup to be visible via dashboard and restart apache2 service
 
 6-juno-aio-install-cinder.sh
 
 This script will install and configure the Block storage service for Openstack which is Cinder. Following will be done:
-- Create database and database user for cinder in MySQL
-- Create a user for cinder in keystone, give admin role to this user and add to service tenant
-- Create service for Block Storage service in keystone and define an endpoint for this service
-- Install packages for cinder (cinder-api cinder-scheduler, cinder-volume, cinder-backup, python-cinderclient), iSCSI (iscsitarget open-iscsi iscsitarget-dkms) and LVM (lvm2)
-- Configure cinder
-- Create a loopback device to be used as a PV for volume group for cinder. The volume group will be created by the name cinder-volumes
-- Restart services (cinder-api, cinder-scheduler, tgt, cinder-volume, cinder-backup)
+
+    - Create database and database user for cinder in MySQL
+    - Create a user for cinder in keystone, give admin role to this user and add to service tenant
+    - Create service for Block Storage service in keystone and define an endpoint for this service
+    - Install packages for cinder (cinder-api cinder-scheduler, cinder-volume, cinder-backup, python-cinderclient), iSCSI (iscsitarget open-iscsi iscsitarget-dkms) and LVM (lvm2)
+    - Configure cinder
+    - Create a loopback device to be used as a PV for volume group for cinder. The volume group will be created by the name cinder-volumes
+    - Restart services (cinder-api, cinder-scheduler, tgt, cinder-volume, cinder-backup)
 
 
 7-juno-aio-install-swift.sh
 
 This script will install and configure the Object storage service for Openstack which is Swift. Following will be done:
-- Create database and database user for swift in MySQL
-- Create a user for swift in keystone, give admin role to this user and add to service tenant
-- Create service for Object storage service in keystone and define an endpoint for this service 
-- Install packages for swift (swift, swift-proxy, python-swiftclient, python-keystoneclient, python-keystonemiddleware, memcached, swift-account, swift-container, swift-object) and some additional required packages (xfsprogs, curl, rsync)
-- Create a loopback device and format as an xfs filesystem to be used for swift.
-- Create multiple directories inside this loopback filesystem to simulate multiple Storage nodes for swift
-- Configure rsync to replicate across these directories to simulate replication across the swift Storage nodes
-- Configure swift proxy, account server, container server and object server
-- Build rings for swift
-- Restart swift services
+
+    - Create database and database user for swift in MySQL
+    - Create a user for swift in keystone, give admin role to this user and add to service tenant
+    - Create service for Object storage service in keystone and define an endpoint for this service 
+    - Install packages for swift (swift, swift-proxy, python-swiftclient, python-keystoneclient, python-keystonemiddleware, memcached, swift-account, swift-container, swift-object) and some additional required packages (xfsprogs, curl, rsync)
+    - Create a loopback device and format as an xfs filesystem to be used for swift.
+    - Create multiple directories inside this loopback filesystem to simulate multiple Storage nodes for swift
+    - Configure rsync to replicate across these directories to simulate replication across the swift Storage nodes
+    - Configure swift proxy, account server, container server and object server
+    - Build rings for swift
+    - Restart swift services
 
 8-juno-aio-install-heat.sh
 
 This script will install and configure the Orchestration service for Openstack which is Heat. Following will be done:
-- Create database and database user for heat in MySQL
-- Create a user for heat in keystone, give admin role to this user and add to service tenant
-- Create service for Orchestration service in keystone and define an endpoint for this service  
-- Install packages for heat (heat-api, heat-api-cfn, heat-engine, python-heatclient)
-- Configure heat
-- Restart services (heat-api, heat-api-cfn, heat-engine)
+
+    - Create database and database user for heat in MySQL
+    - Create a user for heat in keystone, give admin role to this user and add to service tenant
+    - Create service for Orchestration service in keystone and define an endpoint for this service  
+    - Install packages for heat (heat-api, heat-api-cfn, heat-engine, python-heatclient)
+    - Configure heat
+    - Restart services (heat-api, heat-api-cfn, heat-engine)
 
 9-juno-aio-install-ceilometer.sh
 
 This script will install and configure the Metering service for Openstack which is Ceilometer. Following will be done:
-- Create database and database user for ceilometer in MySQL
-- Create a user for ceilometer in keystone, give admin role to this user and add to service tenant
-- Create service for Metering service in keystone and define an endpoint for this service  
-- Install mongodb database and create user for ceilometer. This mongodb database will be used for storing all the ceilometer collected metrics, alarms, events etc.
-- Install packages for ceilometer (ceilometer-api, ceilometer-collector, ceilometer-agent-central, ceilometer-agent-notification, ceilometer-alarm-evaluator, ceilometer-alarm-notifier, python-ceilometerclient)
-- Configure ceilometer
-- Restart ceilometer services (ceilometer-agent-central, ceilometer-agent-notification, ceilometer-api, ceilometer-collector, ceilometer-alarm-evaluator, ceilometer-alarm-notifier)
-- Install ceilometer agent packages to monitor compute (ceilometer-agent-compute)
-- Configure ceilometer to monitor compute (nova) and restart services (ceilometer-agent-compute, nova-compute)
-- Configure ceilometer to monitor image (glance)and restart services (glance-registry, glance-api)
-- Configure ceilometer to monitor block storage (cinder)and restart services (cinder-api, cinder-scheduler, cinder-volume)
-- Configure ceilometer to monitor object storage (swift), add ceilometer to group swift and restart services (swift-proxy)
-- Configure ceilometer to monitor networking (neutron) and restart services (neutron-server, neutron-dhcp-agent, neutron-l3-agent, neutron-metadata-agent, neutron-plugin-openvswitch-agent)
+
+    - Create database and database user for ceilometer in MySQL
+    - Create a user for ceilometer in keystone, give admin role to this user and add to service tenant
+    - Create service for Metering service in keystone and define an endpoint for this service  
+    - Install mongodb database and create user for ceilometer. This mongodb database will be used for storing all the ceilometer collected metrics, alarms, events etc.
+    - Install packages for ceilometer (ceilometer-api, ceilometer-collector, ceilometer-agent-central, ceilometer-agent-notification, ceilometer-alarm-evaluator, ceilometer-alarm-notifier, python-ceilometerclient)
+    - Configure ceilometer
+    - Restart ceilometer services (ceilometer-agent-central, ceilometer-agent-notification, ceilometer-api, ceilometer-collector, ceilometer-alarm-evaluator, ceilometer-alarm-notifier)
+    - Install ceilometer agent packages to monitor compute (ceilometer-agent-compute)
+    - Configure ceilometer to monitor compute (nova) and restart services (ceilometer-agent-compute, nova-compute)
+    - Configure ceilometer to monitor image (glance)and restart services (glance-registry, glance-api)
+    - Configure ceilometer to monitor block storage (cinder)and restart services (cinder-api, cinder-scheduler, cinder-volume)
+    - Configure ceilometer to monitor object storage (swift), add ceilometer to group swift and restart services (swift-proxy)
+    - Configure ceilometer to monitor networking (neutron) and restart services (neutron-server, neutron-dhcp-agent, neutron-l3-agent, neutron-metadata-agent, neutron-plugin-openvswitch-agent)
 

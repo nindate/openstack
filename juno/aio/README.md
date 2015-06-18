@@ -41,7 +41,7 @@ Run sudo -s , to become root.
 
 Update the config.cfg file with appropriate details for the installation e.g. which interface will be used for Management network, Tunnel network, External network; what will be the IP addresses for Management, Tunnel, External interfaces etc.
 
-After you have updated the config.cfg file, you need to run the following scripts in the listed order. (For a detailed explanation about each script, what it does you can go through the next Section [5. Detailed explanation about the scripts](https://github.com/nindate/openstack/master/juno/aio#5-detailed-explanation-about-the-scripts)
+After you have updated the config.cfg file, you need to run the following scripts in the listed order. (For a detailed explanation about each script, what it does you can go through the next Section [5. Detailed explanation about the scripts](https://github.com/nindate/openstack/blob/master/juno/aio/README.md#5-detailed-explanation-about-the-scripts)
 
 ./0-juno-aio-prepare.sh - This script will prepare the server for Openstack installation.
 
@@ -65,7 +65,7 @@ At this stage, the Openstack dashboard is installed and you can access it using 
 
 ./9-juno-aio-install-ceilometer.sh - This script will install and configure the Metering service for Openstack which is Ceilometer. 
 
-
+This completes installation of the Openstack components on your Openstack AIO server.
 
 ### 5. Detailed explanation about the scripts:
 0-juno-aio-prepare.sh

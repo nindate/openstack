@@ -25,7 +25,7 @@ Following are the requirements for the AIO server.
   * Install Ubuntu 14.04 x64 server with Openssh package installed (so that you can ssh to this server). 
   * Update the packages on the server with following command:
 
-    apt-get update -y
+        $ sudo apt-get update -y
 
 
 ### 4. Install Openstack:
@@ -33,39 +33,62 @@ After you have Ubuntu 14.04 server installed on the AIO server, perform the foll
 
 Create a directory to place the Openstack installation scripts.
 
-   mkdir scripts ; cd scripts
+    $ mkdir scripts
+    $ cd scripts
 
 Download the scripts
 
-Run sudo -s , to become root. 
+Become root user:
+    $ sudo -s
 
 Update the config.cfg file with appropriate details for the installation e.g. which interface will be used for Management network, Tunnel network, External network; what will be the IP addresses for Management, Tunnel, External interfaces etc.
 
 After you have updated the config.cfg file, you need to run the following scripts in the listed order. (For a detailed explanation about each script, what it does you can go through the next Section [5. Detailed explanation about the scripts](https://github.com/nindate/openstack/blob/master/juno/aio/README.md#5-detailed-explanation-about-the-scripts)
 
-./0-juno-aio-prepare.sh - This script will prepare the server for Openstack installation.
+Run the script 0-juno-aio-prepare.sh to prepare the AIO server for Openstack installation.
 
-./1-juno-aio-install-keystone.sh - This script will install and configure the Identity service for Openstack which is Keystone.
+    # ./0-juno-aio-prepare.sh 
 
-./2-juno-aio-install-glance.sh - This script will install and configure the Image service for Openstack which is Glance.
+Run the script 1-juno-aio-install-keystone.sh to install and configure the Openstack Identity service (Keystone).
 
-./3-juno-aio-install-nova.sh - This script will install and configure the Compute service for Openstack which is Nova
+    # ./1-juno-aio-install-keystone.sh
 
-./4-juno-aio-install-neutron.sh - This script will install and configure the Networking service for Openstack which is Neutron.
+Run the script 2-juno-aio-install-glance.sh to install and configure the Openstack Image service (Glance).
 
-./5-juno-aio-install-horizon.sh - This script will install and configure the Dashboard service for Openstack which is Horizon.
+    # ./2-juno-aio-install-glance.sh
+
+Run the script 3-juno-aio-install-nova.sh to install and configure the Openstack Compute service (Nova)
+
+    # ./3-juno-aio-install-nova.sh
+
+Run the script 4-juno-aio-install-neutron.sh to install and configure the Openstack Networking service (Neutron)
+
+    # ./4-juno-aio-install-neutron.sh
+
+Run the script 5-juno-aio-install-horizon.sh to install and configure the Openstack Dashboard service (Horizon)
+
+    # ./5-juno-aio-install-horizon.sh
 
 At this stage, the Openstack dashboard is installed and you can access it using the admin or demo username and password that you have set in config.cfg file. The URL for dashboard and the user/password will be displayed when the 5-juno-aio-install-horizon.sh script completes execution.
 
-./6-juno-aio-install-cinder.sh - This script will install and configure the Block storage service for Openstack which is Cinder.
+Run the script 6-juno-aio-install-cinder.sh to install and configure the Openstack Block storage service (Cinder)
 
-./7-juno-aio-install-swift.sh - This script will install and configure the Object storage service for Openstack which is Swift.
+    # ./6-juno-aio-install-cinder.sh
 
-./8-juno-aio-install-heat.sh - This script will install and configure the Orchestration service for Openstack which is Heat.
+Run the script 7-juno-aio-install-swift.sh to install and configure the Openstack Object storage service (Swift)
 
-./9-juno-aio-install-ceilometer.sh - This script will install and configure the Metering service for Openstack which is Ceilometer. 
+    # ./7-juno-aio-install-swift.sh
+
+Run the script 8-juno-aio-install-heat.sh to install and configure the Openstack Orchestration service (Heat)
+
+    # ./8-juno-aio-install-heat.sh
+
+Run the script 9-juno-aio-install-ceilometer.sh to install and configure the Openstack Metering service (Ceilometer)
+
+    # ./9-juno-aio-install-ceilometer.sh
 
 This completes installation of the Openstack components on your Openstack AIO server.
+
 
 ### 5. Detailed explanation about the scripts:
 0-juno-aio-prepare.sh

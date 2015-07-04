@@ -102,7 +102,8 @@ Run the script 0-juno-aio-prepare.sh to prepare the AIO server for Openstack ins
 
     # ./0-juno-aio-prepare.sh 
 
-Once the script has run successfully, restart the server using init 6
+One of the things this script does is updates and upgrades packages. Hence, after the script has ran successfully, restart the server using init 6
+
 Run the script 1-juno-aio-install-keystone.sh to install and configure the Openstack Identity service (Keystone).
 
     # ./1-juno-aio-install-keystone.sh

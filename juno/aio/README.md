@@ -155,7 +155,6 @@ This script will prepare the server for Openstack installation. Following will b
     - Install MySQL database and secure the mysql installation
     - Install RabbitMQ messaging server and create guest user (which will be used by openstack services)
 
-Once the script has run successfully, restart the server using init 6
 
 1-juno-aio-install-keystone.sh
 

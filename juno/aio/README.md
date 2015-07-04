@@ -18,6 +18,44 @@ It is better that I explain a little bit on some generic stuff of Openstack in t
 
    In the AIO setup all these networks will be connected to the single server we will be having - our AIO server. Following figure shows this connectivity
 
+Connectivity for Openstack AIO setup
+
+
+
+       
+        
+    ---MANAGEMENT NW---------------
+                                  |
+                              eth0|
+                               -------Controller
+                          eth2 |     |   +             +
+    ---EXTERNAL NW-------------|     | Network     Block Storage
+                               |     |   +             +
+                               ------- Compute    Object Storage
+                              eth1|
+                                  |
+    ---DATA/TUNNEL NW--------------
+        
+        
+        
+        Once you have completed the AIO node setup, you may optionally want to add more compute nodes
+        to this setup. The connectivity for the additional compute nodes should be as shown below
+        
+    ---MANAGEMENT NW-----------------(Optional additional compute nodes)---
+                                  |                                       |
+                              eth0|                                   eth0|
+                               -------Controller                       -------ComputeX
+                          eth2 |     |   +             +               |     |
+    ---EXTERNAL NW-------------|     | Network     Block Storage       |     |
+                               |     |   +             +               |     |
+                               ------- Compute   Object Storage        -------
+                              eth1|                                   eth1|
+                                  |                                       |
+    ---DATA/TUNNEL NW------------------------------------------------------
+
+
+
+
 ### 3. Setup requirements:
 Following are the requirements for the AIO server.
   * In case you are using a Virtual Machine you would need to create a VM with atleast 2 CPUs, 5 GB memory, 40 GB hard disk. This configuration should be enough for basic demo/testing with cirros cloud image to deploy instances in Openstack cloud. However, if you want to use any other OS (like Ubuntu, CentOS, Fedora etc.) inside Openstack you would need more CPU/Memory for the AIO server.

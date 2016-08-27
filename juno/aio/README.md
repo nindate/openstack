@@ -98,6 +98,9 @@ Update the config.cfg file with appropriate details for the installation e.g. wh
 
 After you have updated the config.cfg file, you need to run the following scripts in the listed order. (For a detailed explanation about each script, what it does you can go through the next Section [5. Detailed explanation about the scripts](https://github.com/nindate/openstack/blob/master/juno/aio/README.md#5-detailed-explanation-about-the-scripts)
 
+Make the scripts executable
+   # chmod u+x *.sh
+
 Run the script 0-juno-aio-prepare.sh to prepare the AIO server for Openstack installation.
 
     # ./0-juno-aio-prepare.sh 

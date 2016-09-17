@@ -1,0 +1,20 @@
+#!/bin/bash -x
+./0-juno-multinode-ctrl-0-prepare.sh
+./0-juno-multinode-db-1-install.sh
+./0-juno-multinode-db-2-create-databases.sh
+./0-juno-multinode-amqp-1-install.sh
+./0-juno-multinode-memcached-1-install.sh
+./1-juno-multinode-ctrl-1-keystone.sh
+./1-juno-multinode-ctrl-2-keystone-db-manage.sh
+./1-juno-multinode-ctrl-3-keystone-create-users-tenants-roles.sh
+./2-juno-multinode-ctrl-1-glance.sh
+./2-juno-multinode-ctrl-2-glance-db-manage.sh
+./3-juno-multinode-ctrl-1-nova.sh
+./3-juno-multinode-ctrl-2-nova-db-manage.sh
+./12-juno-multinode-comp-1-nova.sh
+./4-juno-multinode-ctrl-1-neutron.sh
+./4-juno-multinode-ctrl-2-neutron-db-manage.sh
+./13-juno-multinode-comp-2-neutron.sh
+./5-juno-multinode-ctrl-5-horizon.sh
+./6-juno-multinode-ctrl-6-cinder.sh
+./6-juno-multinode-stor-6-cinder.sh
